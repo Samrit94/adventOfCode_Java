@@ -5,43 +5,43 @@ import java.util.*;
 import java.util.regex.*;
 
 public class Day3 {
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         //Path input file
-		String filePath = "input2.txt";
-		
-		//get all matches Part1
-		int totalamount = readListsFromFile(filePath);
+        String filePath = "input2.txt";
+        
+        //get all matches Part1
+        int totalamount = readListsFromFile(filePath);
         System.out.println("Total Amount Part 1: " + totalamount);
         
         //get all matches Part2
         int totalamount2 = readListsFromFile2(filePath);
         System.out.println("Total Amount Part 2: " + totalamount2);
         
-	}
-	
-	//Methods:	
-	public static int readListsFromFile(String filePath) {
+    }
+    
+    //Methods:    
+    public static int readListsFromFile(String filePath) {
         List<String> totalHits = new ArrayList<>();   
-		int totalamount = 0;
+        int totalamount = 0;
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             String regex = "mul\\((\\d+),(\\d+)\\)";
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher;
-    		int x, y;
+            int x, y;
             
             //read string from line
-            while ((line = br.readLine()) != null) {            	
+            while ((line = br.readLine()) != null) {                
                 matcher = pattern.matcher(line);                
                 while (matcher.find()) {
                     // Append the matched substring to list
-                	totalHits.add(matcher.group());
+                    totalHits.add(matcher.group());
                 }
             }
 
             for (String match : totalHits) {
-            	String[] temp = match.replace("mul(", "").replace(")", "").split(",");
+                String[] temp = match.replace("mul(", "").replace(")", "").split(",");
                 x = Integer.parseInt(temp[0]);  // First number 
                 y = Integer.parseInt(temp[1]);  // Second number
                 
@@ -54,22 +54,22 @@ public class Day3 {
 
         return totalamount;
     }
-	
-	public static int readListsFromFile2(String filePath) {
+    
+    public static int readListsFromFile2(String filePath) {
         List<String> totalHits = new ArrayList<>();   
-		int totalamount = 0;
+        int totalamount = 0;
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             String regex = "mul\\((\\d+),(\\d+)\\)";
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher;
-    		int x, y;
-    		
-    		StringBuilder content = new StringBuilder();
+            int x, y;
+            
+            StringBuilder content = new StringBuilder();
                         
-    		//performance went bad handling more than one line while cutting out the dont and do 
-    		//so now add all lines into a single string 
+            //performance went bad handling more than one line while cutting out the dont and do 
+            //so now add all lines into a single string 
             while ((line = br.readLine()) != null) {
                 content.append(line).append("\n");
             }
@@ -81,11 +81,11 @@ public class Day3 {
             matcher = pattern.matcher(processedString);     
                 while (matcher.find()) {
                     // Append the matched substring to list
-                	totalHits.add(matcher.group());
+                    totalHits.add(matcher.group());
                 }                
 
             for (String match : totalHits) {
-            	String[] temp = match.replace("mul(", "").replace(")", "").split(",");
+                String[] temp = match.replace("mul(", "").replace(")", "").split(",");
                 x = Integer.parseInt(temp[0]);  // First number 
                 y = Integer.parseInt(temp[1]);  // Second number
                 
@@ -98,7 +98,7 @@ public class Day3 {
 
         return totalamount;
     }
-	
+    
     public static String removeDontToDoSections(String content) {
         while (content.contains("don't()")) {
             int dontIndex = content.indexOf("don't()");
@@ -113,5 +113,5 @@ public class Day3 {
             }
         }
         return content;
-    }	
+    }    
 }

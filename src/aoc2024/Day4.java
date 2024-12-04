@@ -6,13 +6,13 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Day4 {	
-	
-	public static void main(String[] args) {
+public class Day4 {    
+    
+    public static void main(String[] args) {
         // Path to input file
-	
-		int totalCount = 0;
-		int countHorizontal, countVertical, countDiagonal;
+    
+        int totalCount = 0;
+        int countHorizontal, countVertical, countDiagonal;
         String filePath = "input.txt";
         char [][] twoDimesionArray = null;
         twoDimesionArray = readFile(filePath);
@@ -36,10 +36,10 @@ public class Day4 {
         System.out.println("Count X-MAS: " + countXMax);
         
     }
-	
-	//Read file into Array
+    
+    //Read file into Array
     public static char[][] readFile(String filename) {
-    	ArrayList<char[]> array = new ArrayList<char[]>();
+        ArrayList<char[]> array = new ArrayList<char[]>();
         char [][] twoDimesionArray = null;
         try
         {
@@ -67,12 +67,12 @@ public class Day4 {
         {
             ex.printStackTrace();
         }        
-		return twoDimesionArray;
+        return twoDimesionArray;
     }
     
     //Part 1 functions
     public static int searchPerLine(String line) {
-    	int count = 0;
+        int count = 0;
 
             String searchString = "XMAS";
             String searchBackwards = "SAMX";
@@ -82,63 +82,63 @@ public class Day4 {
             
             matcher = pattern.matcher(line);                
             while (matcher.find()) {
-               	count++;
+                   count++;
             }
                 
             matcher = pattern2.matcher(line);                
             while (matcher.find()) {
-              	count++;
+                  count++;
             }
             
-        return count;    	
+        return count;        
     }
     
     public static int searchHorizontal(char [][] searchBase) {
-    	int count = 0;
-    	String line = "";
-    	for (int y = 0; y < searchBase.length; y++)
+        int count = 0;
+        String line = "";
+        for (int y = 0; y < searchBase.length; y++)
         {
-    		line = "";
+            line = "";
             char [] temp = searchBase[y];
             for (int x = 0; x < temp.length; x ++ )
             {
-            	line = line + temp[x];
+                line = line + temp[x];
             }
             //System.out.println(line);
             count += searchPerLine(line);
-        }    	
-		return count;    	
+        }        
+        return count;        
     }
     
     public static int searchVertical(char [][] searchBase) {
-    	int count = 0;
-    	String line = "";
-    	char [] temp = searchBase[0];    	
-    	for (int y = 0; y < temp.length; y++)
+        int count = 0;
+        String line = "";
+        char [] temp = searchBase[0];        
+        for (int y = 0; y < temp.length; y++)
         {
-    		line = "";
+            line = "";
             for (int x = 0; x < searchBase.length; x++ )
             {
-            	line = line + searchBase[x][y];
+                line = line + searchBase[x][y];
             } 
             //System.out.println(line);
             count += searchPerLine(line);
-        }    	
-		return count;    	
+        }        
+        return count;        
     }    
     
     public static int searchDiagonal(char [][] searchBase) {
-    	int count = 0;
-    	int rowLength = searchBase.length;
-    	int colLength = searchBase[0].length;
-    	int keyWordLength = "XMAS".length();
-    	
-    	for(int row = 0; row < rowLength; row++){
-    		for(int col = 0; col < colLength; col++) { 
-    			//System.out.println("row:"+row+" column:"+column);
-    			//System.out.println("max row:"+rowLength+" max column:"+columnLength);
-    			// Diagonal (top-left to bottom-right)
-    			if (row <= rowLength - keyWordLength && col <= colLength - keyWordLength && searchDownRight(searchBase, row, col)) {
+        int count = 0;
+        int rowLength = searchBase.length;
+        int colLength = searchBase[0].length;
+        int keyWordLength = "XMAS".length();
+        
+        for(int row = 0; row < rowLength; row++){
+            for(int col = 0; col < colLength; col++) { 
+                //System.out.println("row:"+row+" column:"+column);
+                //System.out.println("max row:"+rowLength+" max column:"+columnLength);
+                // Diagonal (top-left to bottom-right)
+                if (row <= rowLength - keyWordLength && col <= colLength - keyWordLength && searchDownRight(searchBase, row, col)) {
                     count++;
                 }
                 // Diagonal (bottom-left to top-right)
@@ -153,65 +153,65 @@ public class Day4 {
                 if (row >= keyWordLength - 1 && col >= keyWordLength - 1 && searchUpLeft(searchBase, row, col)) {
                     count++;
                 }
-    		}
-    	}
-		return count;    	
+            }
+        }
+        return count;        
     }
     
     public static boolean searchUpLeft(char[][] searchBase, int row, int col) {
-    	boolean found = false; 	    	
-		if (searchBase[row][col] == 'X') {			
-			if (searchBase[row-1][col-1] =='M') {
-				if (searchBase[row-2][col-2]=='A') {
-					if (searchBase[row-3][col-3] =='S') {
-						found = true;
-					}
-				}
-			}
-		}			
-		return found;
+        boolean found = false;             
+        if (searchBase[row][col] == 'X') {            
+            if (searchBase[row-1][col-1] =='M') {
+                if (searchBase[row-2][col-2]=='A') {
+                    if (searchBase[row-3][col-3] =='S') {
+                        found = true;
+                    }
+                }
+            }
+        }            
+        return found;
     }
     
     public static boolean searchUpRight(char[][] searchBase, int row, int col) {
-    	boolean found = false;	
-		if (searchBase[row][col]=='X') {
-			if (searchBase[row-1][col+1]=='M') {
-				if (searchBase[row-2][col+2]=='A') {
-					if (searchBase[row-3][col+3]=='S') {
-						found = true;
-					}
-				}
-			}
-		}		
-		return found;
+        boolean found = false;    
+        if (searchBase[row][col]=='X') {
+            if (searchBase[row-1][col+1]=='M') {
+                if (searchBase[row-2][col+2]=='A') {
+                    if (searchBase[row-3][col+3]=='S') {
+                        found = true;
+                    }
+                }
+            }
+        }        
+        return found;
     }
     
     public static boolean searchDownLeft(char[][] searchBase, int row, int col) {
-    	boolean found = false;    	
-		if (searchBase[row][col]=='X') {
-			if (searchBase[row+1][col-1]=='M') {
-				if (searchBase[row+2][col-2]=='A') {
-					if (searchBase[row+3][col-3]=='S') {
-						found = true;
-					}
-				}
-			}
-		}		
-		return found;
+        boolean found = false;        
+        if (searchBase[row][col]=='X') {
+            if (searchBase[row+1][col-1]=='M') {
+                if (searchBase[row+2][col-2]=='A') {
+                    if (searchBase[row+3][col-3]=='S') {
+                        found = true;
+                    }
+                }
+            }
+        }        
+        return found;
     }
     
     public static boolean searchDownRight(char[][] searchBase, int row, int col ) {
-    	boolean found = false;
-		if (searchBase[row][col]=='X') {
-			if (searchBase[row+1][col+1]=='M') {
-				if (searchBase[row+2][col+2]=='A') {
-					if (searchBase[row+3][col+3]=='S') {
-						found = true;
-					}
-				}
-			}
-		}		
-		return found;
+        boolean found = false;
+        if (searchBase[row][col]=='X') {
+            if (searchBase[row+1][col+1]=='M') {
+                if (searchBase[row+2][col+2]=='A') {
+                    if (searchBase[row+3][col+3]=='S') {
+                        found = true;
+                    }
+                }
+            }
+        }        
+        return found;
     }
     
     
