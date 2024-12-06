@@ -11,25 +11,25 @@ import java.util.Map;
 
 public class Day5 {
     public static void main(String[] args) {
-        List<String> rule_list = new ArrayList<String>();
-        List<String> page_list = new ArrayList<String>();
-        List<String> valid_list = new ArrayList<String>();
-        List<String> inValid_list = new ArrayList<String>();
+        List<String> ruleList = new ArrayList<String>();
+        List<String> pageList = new ArrayList<String>();
+        List<String> validList = new ArrayList<String>();
+        List<String> inValidList = new ArrayList<String>();
         
         // Path to input file
         String filePath = "input.txt";        
-        readFile(filePath, rule_list, page_list);
+        readFile(filePath, ruleList, pageList);
         
         //Part1
-        getSortLists( rule_list, page_list,valid_list, inValid_list);        
-        int resultPart1 = sumMiddleValue(valid_list);
+        getSortLists( ruleList, pageList,validList, inValidList);        
+        int resultPart1 = sumMiddleValue(validList);
         System.out.println("Sum of Valid Numebrs in the Middle: "+resultPart1);        
         
         //Part2
         Map<Integer, Rule> rules = new HashMap<>();
-        for (int i = 0; i< rule_list.size(); i++) {           
+        for (int i = 0; i< ruleList.size(); i++) {           
             //read through the rules 
-            int[] lineNumbers = Arrays.stream(rule_list.get(i).split("\\|")).mapToInt(str -> Integer.parseInt(str.trim())).toArray();
+            int[] lineNumbers = Arrays.stream(ruleList.get(i).split("\\|")).mapToInt(str -> Integer.parseInt(str.trim())).toArray();
             if (!rules.containsKey(lineNumbers[0])) { rules.put(lineNumbers[0], new Rule(lineNumbers[0])); }
             if (!rules.containsKey(lineNumbers[1])) { rules.put(lineNumbers[1], new Rule(lineNumbers[1])); }
             
@@ -39,8 +39,8 @@ public class Day5 {
         
         int sumPartTwo = 0; 
        
-        for (int i = 0; i< inValid_list.size(); i++) {
-            String temp = inValid_list.get(i);      
+        for (int i = 0; i< inValidList.size(); i++) {
+            String temp = inValidList.get(i);      
             int[] line = Arrays.stream(temp.split(",")).mapToInt(str -> Integer.parseInt(str.trim())).toArray();
             Rule[] sort = Arrays.stream(line).mapToObj(p -> rules.get(p)).toArray(Rule[]::new);
             Arrays.sort(sort);
