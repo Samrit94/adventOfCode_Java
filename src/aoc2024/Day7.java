@@ -74,7 +74,7 @@ public class Day7 {
             generateVariants(numbers, plusPositions, 0, variants);
             
             for (String variant : variants) {
-                double calc = calculateLine2(variant);
+                double calc = calculateLine(variant);
                 if (calc == lineResult) {
                     total += lineResult;
                     break;
