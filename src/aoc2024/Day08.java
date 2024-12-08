@@ -2,7 +2,7 @@ package aoc2024;
 import java.io.*;
 import java.util.*;
 
-public class Day8 {
+public class Day08 {
     
     public static void main(String[] args) {
         String filename = "input.txt";

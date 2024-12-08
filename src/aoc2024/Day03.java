@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 import java.util.regex.*;
 
-public class Day3 {
+public class Day03 {
     public static void main(String[] args) {
         //Path input file
         String filePath = "input2.txt";

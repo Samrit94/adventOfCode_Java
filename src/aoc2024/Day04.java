@@ -6,7 +6,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Day4 {    
+public class Day04 {    
     
     public static void main(String[] args) {
         // Path to input file

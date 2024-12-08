@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 
-public class Day6 {
+public class Day06 {
     static int SIZE;
     static final int up = 0;
     static final int right = 1;

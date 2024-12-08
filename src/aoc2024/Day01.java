@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
 
-public class Day1 {
+public class Day01 {
 
     public static void main(String[] args) {
         // Path to the input file

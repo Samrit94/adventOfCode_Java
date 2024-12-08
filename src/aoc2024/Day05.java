@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class Day5 {
+public class Day05 {
     public static void main(String[] args) {
         List<String> ruleList = new ArrayList<String>();
         List<String> pageList = new ArrayList<String>();

@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Day7 {
+public class Day07 {
     public static void main(String[] args) {
         // Path to input file
         String filePath = "input.txt";

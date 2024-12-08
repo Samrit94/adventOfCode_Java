@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Day2 {
+public class Day02 {
 
     public static void main(String[] args) {
         // Input file path (change this to your file's path)
