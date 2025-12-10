@@ -15,7 +15,7 @@ public class Day10 {
 
     public static void main(String[] args) {
         
-        String filePath = "C:\\JavaProjects\\Event\\AoC2025\\Day10\\input.txt";
+        String filePath = "input.txt";
         
         //Kind of Brute Force it
         int fewestButtonPresses = getFewestButtonPresses(filePath);        
